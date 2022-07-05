@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class Name implements Serializable {
 	protected String firstName, lastName;
 

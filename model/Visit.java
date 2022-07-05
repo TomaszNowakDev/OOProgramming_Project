@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+@SuppressWarnings("serial")
 public class Visit implements Serializable{
 	private LocalDate date;
 	String notes;

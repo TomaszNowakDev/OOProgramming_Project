@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+@SuppressWarnings("serial")
 public class Patient extends Person implements Serializable {
 
 	private ArrayList<Visit> visits;
