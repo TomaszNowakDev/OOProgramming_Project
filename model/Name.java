@@ -36,4 +36,17 @@ public class Name implements Serializable {
 		return fullName;
 	}
 	
+	
+
+	@Override
+	public boolean equals(Object o) {
+		if (this.firstName == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		Name name = (Name) o;
+		boolean result = this.firstName.toLowerCase().equals(name.firstName.toLowerCase())
+				&& this.lastName.toLowerCase().equals(name.lastName.toLowerCase());
+		return result;
+	}
 }
