@@ -38,5 +38,24 @@ public class Patient extends Person implements Serializable {
 	public void add(Visit v) {
 		this.visits.add(v);
 	}
-	
+
+	public void showAllVisits() {
+		for (Visit v : visits) {
+			System.out.println(v.getDate() + " " + v.getNotes());
+		}
+	}
+
+	public String toString() {
+		String str = super.getName().getLastName() + ", " + super.getName().getFirstName() + " Illness: "
+				+ this.getIllness() + ", Severity: " + this.getSeverity() + ", List of visits: " + this.visits;
+		return str;
+	}
+
+	public SeverityOptions getSeverity() {
+		return severity;
+	}
+
+	public void setSeverity(SeverityOptions severity) {
+		this.severity = severity;
+	}
 }
