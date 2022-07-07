@@ -6,6 +6,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Optional;
 import storage.Storage;
+import view.MyHorizontalBox;
+import view.MyHorizontalBoxTab2;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -16,6 +18,8 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -103,6 +107,19 @@ public class AppController implements Serializable {
 		this.load();
 		this.myStage = st;
 		st.setTitle("Hospital Consultancy Application");
+
+		AppController.my_box1 = new MyHorizontalBox();
+		tabPane = new TabPane();
+		Tab tab1 = new Tab("Patient Management");
+		tab1.setContent(my_box1);
+		tab1.setClosable(false);
+		tabPane.getTabs().add(tab1);
+
+		AppController.my_box2 = new MyHorizontalBoxTab2();
+		Tab tab2 = new Tab("Consultant Management");
+		tab2.setContent(my_box2);
+		tab2.setClosable(false);
+		tabPane.getTabs().add(tab2);
 
 		BorderPane root = new BorderPane();
 
