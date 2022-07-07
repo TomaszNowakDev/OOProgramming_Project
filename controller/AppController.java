@@ -4,15 +4,20 @@ import model.Consultant;
 import model.ConsultantsList;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Optional;
 import storage.Storage;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import storage.SerialStorage;
 
@@ -74,6 +79,24 @@ public class AppController implements Serializable {
 		store = new SerialStorage();
 	}
 
+	// save function
+	public void save() {
+		this.store.save(obj);
+	}
+
+	// load function
+	public void load() {
+		Object o = this.store.read();
+		if (o != null) {
+			obj = (AppController) o;
+		}
+	}
+
+	// set stage
+	public void setStage(Stage s) {
+		this.myStage = s;
+	}
+
 	// Initialization and css connection
 	public void init(Stage st) {
 		this.setStorage();
@@ -90,12 +113,33 @@ public class AppController implements Serializable {
 		MenuItem saveItem = new MenuItem("Save To File");
 		saveItem.setOnAction(e -> save());
 		MenuItem exitItem = new MenuItem("Exit");
-
+		exitItem.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				Alert alert = new Alert(AlertType.CONFIRMATION);
+				alert.setHeaderText("Are you sure you want to quit the program?");
+				alert.setContentText("Unsaved data will be lost!");
+				Optional<ButtonType> result = alert.showAndWait();
+				if (result.isPresent() && result.get() == ButtonType.OK) {
+					Platform.exit();
+				}
+			}
+		});
 		fileMenu.getItems().addAll(loadItem, saveItem, new SeparatorMenuItem(), exitItem);
 
 		Menu helpMenu = new Menu("Help");
 		MenuItem aboutItem = new MenuItem("About");
-
+		aboutItem.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("About");
+				alert.setHeaderText(null);
+				alert.setContentText("Hospital Consultancy Application project.\n Project made by student Tomasz Nowak.");
+				@SuppressWarnings("unused")
+				Optional<ButtonType> result = alert.showAndWait();
+			}
+		});
 		helpMenu.getItems().add(aboutItem);
 		menuBar.getMenus().addAll(fileMenu, helpMenu);
 
