@@ -5,6 +5,13 @@ import model.ConsultantsList;
 import java.io.Serializable;
 import java.util.ArrayList;
 import storage.Storage;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.SeparatorMenuItem;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import storage.SerialStorage;
@@ -65,5 +72,39 @@ public class AppController implements Serializable {
 	// set storage for serialfile
 	private void setStorage() {
 		store = new SerialStorage();
+	}
+
+	// Initialization and css connection
+	public void init(Stage st) {
+		this.setStorage();
+		this.load();
+		this.myStage = st;
+		st.setTitle("Hospital Consultancy Application");
+
+		BorderPane root = new BorderPane();
+
+		MenuBar menuBar = new MenuBar();
+		Menu fileMenu = new Menu("File");
+		MenuItem loadItem = new MenuItem("Load From File");
+		loadItem.setOnAction(e -> load());
+		MenuItem saveItem = new MenuItem("Save To File");
+		saveItem.setOnAction(e -> save());
+		MenuItem exitItem = new MenuItem("Exit");
+
+		fileMenu.getItems().addAll(loadItem, saveItem, new SeparatorMenuItem(), exitItem);
+
+		Menu helpMenu = new Menu("Help");
+		MenuItem aboutItem = new MenuItem("About");
+
+		helpMenu.getItems().add(aboutItem);
+		menuBar.getMenus().addAll(fileMenu, helpMenu);
+
+		root.setTop(menuBar);
+
+		root.setCenter(tabPane);
+		myScene = new Scene(root, 510, 600);
+		myScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		this.myStage.setScene(myScene);
+		this.myStage.show();
 	}
 }
