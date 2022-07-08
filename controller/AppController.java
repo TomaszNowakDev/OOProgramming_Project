@@ -25,6 +25,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import storage.SerialStorage;
 
+@SuppressWarnings("serial")
 public class AppController implements Serializable {
 	private ConsultantsList prac;
 	private static volatile AppController obj;
@@ -167,5 +168,31 @@ public class AppController implements Serializable {
 		myScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		this.myStage.setScene(myScene);
 		this.myStage.show();
+	}
+
+	// remove consultant
+	public void remove(int i) {
+		this.prac.remove(this.prac.getConsultantsList().get(i).getName().getFullName());
+	}
+
+	// add consultant
+	public boolean addConsultant(Consultant c) {
+		return this.prac.addConsultant(c);
+	}
+
+	// get consultants list
+	public ArrayList<String> getConsultantData() {
+		return this.prac.getConsultantData();
+	}
+
+	// get consultants list
+	public ConsultantsList getConsultantList() {
+		return this.prac;
+	}
+	public void refreshConsultants() {
+		AppController.my_box2.handleRefresh();
+	}
+	public void refreshPatients() {
+		AppController.my_box1.handleRefresh();
 	}
 }
