@@ -29,4 +29,26 @@ public class MyHorizontalBox extends HBox implements Serializable {
         initUI();
     }
 
+    private void initUI() {
+        // adding to the hbox
+        this.getChildren().addAll(addVBox());
+    }
+
+    private VBox addVBox() {
+        this.vb = new VBox();
+        this.vb.setSpacing(20);
+        this.addPatient.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                Parent root = new AddPatient();
+                Stage stage = new Stage();
+                stage.setTitle("Add new Patient");
+                stage.setScene(new Scene(root, 400, 450));
+                stage.show();
+                setupListViewData();
+
+            }
+        });
+    }
 }
