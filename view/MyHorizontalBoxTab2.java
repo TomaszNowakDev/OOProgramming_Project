@@ -2,13 +2,22 @@ package view;
 
 import java.io.Serializable;
 import component.MyButton;
+import controller.AppController;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
+import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
+@SuppressWarnings("serial")
 public class MyHorizontalBoxTab2 extends HBox implements Serializable {
     private VBox vb;
     private ListView<String> listView;
@@ -33,7 +42,30 @@ public class MyHorizontalBoxTab2 extends HBox implements Serializable {
         this.listView.setPadding(new Insets(20, 40, 20, 20));
         this.listView.prefHeight(300);
         this.listView.prefWidth(100);
+        this.listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                if (AppController.getInstance().getConsultantData().size() > 0)
+                    selectedIndex = listView.getSelectionModel().getSelectedIndex();
+            }
+        });
+        this.setupListViewData();
         return listView;
+    }
+
+    private void setupListViewData() {
+        // disable delete button if the student list is empty
+        if (AppController.getInstance().getConsultantData().size() > 0) {
+            this.listView.itemsProperty().bind(listProperty);
+            this.listProperty.set(FXCollections.observableArrayList(AppController.getInstance().getConsultantData()));
+            this.deleteConsultant.setDisable(false);
+            this.editConsultant.setDisable(false);
+        } else {
+            this.listView.getItems().clear();
+            this.deleteConsultant.setDisable(true);
+            this.editConsultant.setDisable(true);
+        }
     }
 
     private VBox addVBox() {
