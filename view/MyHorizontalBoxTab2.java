@@ -73,8 +73,28 @@ public class MyHorizontalBoxTab2 extends HBox implements Serializable {
         this.getStyleClass().add("vbox");
         this.vb.setSpacing(20);
         this.addConsultant = new MyButton("Add Consultant");
+        this.deleteConsultant.setOnAction(e -> handleDelete());
+
         this.vb.setPadding(new Insets(60, 20, 20, 20));
         this.vb.getChildren().addAll(addConsultant, editConsultant, deleteConsultant);
 
         return vb;
+    }
+
+    public void handleRefresh() {
+        this.setupListViewData();
+    }
+
+    private void handleDelete() {
+        if (this.selectedIndex < 0) {
+            System.out.println("Please select an item from the list!");
+        } else if (AppController.getInstance().getConsultantData().size() <= selectedIndex) {
+            System.out.println("Please select item from the list");
+        } else {
+            AppController.getInstance().remove(selectedIndex);
+            AppController.getInstance().refreshPatients();
+            this.setupListViewData();
+        }
+    }
+
 }
