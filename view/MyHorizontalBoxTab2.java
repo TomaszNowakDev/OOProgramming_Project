@@ -1,6 +1,13 @@
 package view;
 
 import java.io.Serializable;
+import component.MyButton;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.scene.Scene;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 public class MyHorizontalBoxTab2 extends HBox implements Serializable {
     private VBox vb;
