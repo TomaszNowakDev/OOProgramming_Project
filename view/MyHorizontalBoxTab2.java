@@ -35,4 +35,14 @@ public class MyHorizontalBoxTab2 extends HBox implements Serializable {
         this.listView.prefWidth(100);
         return listView;
     }
+
+    private VBox addVBox() {
+        this.vb = new VBox();
+        this.getStyleClass().add("vbox");
+        this.vb.setSpacing(20);
+        this.addConsultant = new MyButton("Add Consultant");
+        this.vb.setPadding(new Insets(60, 20, 20, 20));
+        this.vb.getChildren().addAll(addConsultant, editConsultant, deleteConsultant);
+
+        return vb;
 }
