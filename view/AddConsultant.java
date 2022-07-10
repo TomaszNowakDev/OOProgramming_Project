@@ -116,4 +116,10 @@ public class AddConsultant extends BorderPane {
 			System.out.println("Consultant added!");
 		}
 	}
+
+	private void clearView() {
+		for (MyTextField t : this.texts) {
+			t.setText("");
+		}
+	}
 }
