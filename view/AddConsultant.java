@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import component.MyButton;
 import component.MyLabel;
 import component.MyTextField;
+import controller.AppController;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -64,6 +67,13 @@ public class AddConsultant extends BorderPane {
 		this.hb.setPadding(new Insets(20, 40, 20, 110));
 		addButton = new MyButton("Save");
 		cancelButton = new MyButton("Cancel");
+		cancelButton.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+			cancelButton.getScene().getWindow().hide();
+			}
+		});
 		this.getStyleClass().add("listView");
 		hb.getChildren().addAll(addButton, cancelButton);
 
