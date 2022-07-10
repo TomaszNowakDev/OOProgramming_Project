@@ -59,6 +59,18 @@ public class AddConsultant extends BorderPane {
 			this.grid.add(this.texts.get(i), 1, i, 1, 1);
 		}
 
+		hb = new HBox();
+		this.hb.setSpacing(20);
+		this.hb.setPadding(new Insets(20, 40, 20, 110));
+		addButton = new MyButton("Save");
+		cancelButton = new MyButton("Cancel");
+		this.getStyleClass().add("listView");
+		hb.getChildren().addAll(addButton, cancelButton);
+
+		this.t = new Text("Add new Consultant");
+		t.setFont(Font.font("Lato", FontPosture.ITALIC, 20));
+		this.setTop(t);
+		this.setBottom(hb);
 		this.setCenter(grid);
 	}
 
