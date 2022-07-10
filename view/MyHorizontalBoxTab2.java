@@ -73,6 +73,18 @@ public class MyHorizontalBoxTab2 extends HBox implements Serializable {
         this.getStyleClass().add("vbox");
         this.vb.setSpacing(20);
         this.addConsultant = new MyButton("Add Consultant");
+        this.addConsultant.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                Parent root = new AddConsultant();
+                Stage stage = new Stage();
+                stage.setTitle("Add Consultant");
+                stage.setScene(new Scene(root, 350, 350));
+                stage.show();
+            }
+        });
+
         this.deleteConsultant.setOnAction(e -> handleDelete());
 
         this.vb.setPadding(new Insets(60, 20, 20, 20));
