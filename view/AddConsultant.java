@@ -66,6 +66,7 @@ public class AddConsultant extends BorderPane {
 		this.hb.setSpacing(20);
 		this.hb.setPadding(new Insets(20, 40, 20, 110));
 		addButton = new MyButton("Save");
+		addButton.setOnAction(e -> handleAdd());
 		cancelButton = new MyButton("Cancel");
 		cancelButton.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -84,4 +85,35 @@ public class AddConsultant extends BorderPane {
 		this.setCenter(grid);
 	}
 
+	private void handleAdd() {
+		int i = 0;
+		String nameFirst = "", nameLast = "", id = "", phone = "", expertise = "";
+		boolean valid = true;
+		for (MyTextField t : this.texts) {
+			if (!t.validate()) {
+				valid = false;
+			} else {
+
+				if (i == 0) {
+					nameFirst = t.getText();
+				} else if (i == 1) {
+					nameLast = t.getText();
+				} else if (i == 2) {
+					id = t.getText();
+				} else if (i == 3) {
+					phone = t.getText();
+				} else {
+					expertise = t.getText();
+				}
+			}
+			i++;
+		}
+		if (valid) {
+			this.consultant = new Consultant(new model.Name(nameFirst, nameLast), id, phone, null, expertise);
+			AppController.getInstance().addConsultant(consultant);
+			AppController.getInstance().refreshConsultants();
+			this.clearView();
+			System.out.println("Consultant added!");
+		}
+	}
 }
