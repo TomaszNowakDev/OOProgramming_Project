@@ -72,7 +72,7 @@ public class AddConsultant extends BorderPane {
 
 			@Override
 			public void handle(ActionEvent event) {
-			cancelButton.getScene().getWindow().hide();
+				cancelButton.getScene().getWindow().hide();
 			}
 		});
 		this.getStyleClass().add("listView");
