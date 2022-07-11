@@ -1,5 +1,12 @@
 package view;
 
+import component.MyButton;
+import component.MyLabel;
+import component.MyTextField;
+import controller.AppController;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -19,11 +26,13 @@ public class EditConsultant extends VBox {
         this.text2 = new MyTextField();
         this.text3 = new MyTextField();
         this.text4 = new MyTextField();
+        this.text5 = new MyTextField();
+        this.setPadding(new Insets(20, 20, 20, 20));
         initUI();
     }
 
     private void initUI() {
-        this.getChildren().addAll(addGridPane());
+        this.getChildren().addAll(addGridPane(), addHBox());
     }
 
     private HBox addHBox() {
@@ -72,5 +81,27 @@ public class EditConsultant extends VBox {
         grid.setVgap(20);
 
         return grid;
+    }
+
+    private void handleEdit() {
+        if (text1.getText().isEmpty() || text2.getText().isEmpty() || text3.getText().isEmpty()
+                || text4.getText().isEmpty() || text5.getText().isEmpty()) {
+            System.out.println("Please fill in all empty fields!");
+        } else {
+
+            AppController.getInstance().getConsultantList().searchConsultants(selectedConsultant.getConsultantName())
+                    .getName().setFirstName(text1.getText());
+            AppController.getInstance().getConsultantList().searchConsultants(selectedConsultant.getConsultantName())
+                    .getName().setLastName(text2.getText());
+            AppController.getInstance().getConsultantList().searchConsultants(selectedConsultant.getConsultantName())
+                    .setPhone(text4.getText());
+            AppController.getInstance().getConsultantList().searchConsultants(selectedConsultant.getConsultantName())
+                    .setId(text3.getText());
+            AppController.getInstance().getConsultantList().searchConsultants(selectedConsultant.getConsultantName())
+                    .setExpertise(text5.getText());
+            AppController.getInstance().refreshConsultants();
+            System.out.println("Consultant's data updated!");
+            saveButton.getScene().getWindow().hide();
+        }
     }
 }
