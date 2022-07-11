@@ -26,6 +26,26 @@ public class EditConsultant extends VBox {
         this.getChildren().addAll(addGridPane());
     }
 
+    private HBox addHBox() {
+
+        this.hb = new HBox();
+        this.hb.setSpacing(10);
+        saveButton = new MyButton("Save Changes");
+        saveButton.setOnAction(e -> handleEdit());
+        cancelButton = new MyButton("Cancel");
+        cancelButton.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                cancelButton.getScene().getWindow().hide();
+            }
+        });
+
+        hb.getChildren().addAll(saveButton, cancelButton);
+        this.hb.setPadding(new Insets(30, 20, 10, 65));
+        return this.hb;
+    }
+
     private GridPane addGridPane() {
         // adding gridPane and text fields with labels
 
