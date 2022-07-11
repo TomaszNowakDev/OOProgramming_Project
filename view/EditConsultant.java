@@ -27,8 +27,10 @@ public class EditConsultant extends VBox {
         this.text3 = new MyTextField();
         this.text4 = new MyTextField();
         this.text5 = new MyTextField();
+        gridUpdate();
         this.setPadding(new Insets(20, 20, 20, 20));
         initUI();
+
     }
 
     private void initUI() {
@@ -81,6 +83,21 @@ public class EditConsultant extends VBox {
         grid.setVgap(20);
 
         return grid;
+    }
+
+    private void gridUpdate() {
+        // update consultant data in the grid
+        text1.setText(AppController.getInstance().getConsultantList()
+                .searchConsultants(selectedConsultant.getConsultantName()).getName().getFirstName());
+        text2.setText(AppController.getInstance().getConsultantList()
+                .searchConsultants(selectedConsultant.getConsultantName()).getName().getLastName());
+        text3.setText(AppController.getInstance().getConsultantList()
+                .searchConsultants(selectedConsultant.getConsultantName()).getID());
+        text4.setText(AppController.getInstance().getConsultantList()
+                .searchConsultants(selectedConsultant.getConsultantName()).getPhone());
+        text5.setText(AppController.getInstance().getConsultantList()
+                .searchConsultants(selectedConsultant.getConsultantName()).getExpertise());
+
     }
 
     private void handleEdit() {
