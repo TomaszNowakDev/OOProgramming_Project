@@ -85,6 +85,23 @@ public class MyHorizontalBoxTab2 extends HBox implements Serializable {
             }
         });
 
+        this.editConsultant.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                if (selectedIndex < 0) {
+                    System.out.println("Please select an item from the list!");
+                } else {
+                    Parent root = new EditConsultant(AppController.getInstance().getConsulatants()
+                            .searchConsultants(AppController.getInstance().getConsultantData().get(selectedIndex)));
+                    Stage stage = new Stage();
+                    stage.setTitle("Edit Consultant");
+                    stage.setScene(new Scene(root, 350, 350));
+                    stage.show();
+                }
+            }
+        });
+
         this.deleteConsultant.setOnAction(e -> handleDelete());
 
         this.vb.setPadding(new Insets(60, 20, 20, 20));
