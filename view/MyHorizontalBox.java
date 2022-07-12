@@ -57,6 +57,24 @@ public class MyHorizontalBox extends HBox implements Serializable {
         return listView;
     }
 
+    private void setupListViewData() {
+        // disable delete button if the student list is empty
+        if (AppController.getInstance().getConsultantList().getAllPacient().size() > 0) {
+            this.listView.itemsProperty().bind(listProperty);
+            this.listProperty.set(
+                    FXCollections.observableArrayList(AppController.getInstance().getConsultantList().getAllPacient()));
+            this.removePatient.setDisable(false);
+            this.editPatient.setDisable(false);
+            this.recordVisit.setDisable(false);
+        } else {
+            this.listView.getItems().clear();
+            this.removePatient.setDisable(true);
+            this.recordVisit.setDisable(true);
+            this.editPatient.setDisable(true);
+        }
+
+    }
+
     private VBox addVBox() {
         this.vb = new VBox();
         this.vb.setSpacing(20);
