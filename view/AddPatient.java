@@ -130,4 +130,42 @@ public class AddPatient extends VBox {
 			return this.hb2;
 		}
 	}
+
+	private void handleAdd() {
+		int i = 0;
+		String nameFirst = "", nameLast = "", id = "", phone = "", illness = "";
+		boolean valid = true;
+		for (MyTextField t : this.texts) {
+			if (!t.validate()) {
+				valid = false;
+			} else {
+
+				if (i == 0) {
+					nameFirst = t.getText();
+				} else if (i == 1) {
+					nameLast = t.getText();
+				} else if (i == 2) {
+					id = t.getText();
+				} else if (i == 3) {
+					phone = t.getText();
+				} else if (i == 4) {
+					illness = t.getText();
+				}
+			}
+			i++;
+		}
+		if (valid) {
+			if(selectedConsultant!=null) {
+				Patient patient = new Patient(new model.Name(nameFirst, nameLast), id, phone, null, illness, SelectedSev);
+				AppController.getInstance().getConsultantList().searchConsultants(selectedConsultant.getConsultantName())
+						.add(patient);
+				AppController.getInstance().refreshPatients();
+				AppController.getInstance().getConsulatants().getPracPacients().add(patient);
+				System.out.println("Patient added!");
+				this.clearView();
+			} else {
+				System.out.println("Select your Consultant");
+			}
+		}
+	}
 }
