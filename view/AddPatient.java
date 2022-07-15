@@ -44,7 +44,7 @@ public class AddPatient extends VBox {
 	}
 
 	private void initUI() {
-		this.getChildren().addAll( addGridPane());
+		this.getChildren().addAll(this.addHBox(1), addGridPane(), this.addHBox(2));
 
 	}
 
@@ -89,5 +89,45 @@ public class AddPatient extends VBox {
 		});
 		this.grid.add(cbxSev, 1, 5);
 		return grid;
+	}
+
+	private HBox addHBox(int type) {
+		if (type == 1) {
+			this.hb1 = new HBox();
+			this.hb1.setSpacing(20);
+			this.hb1.setPadding(new Insets(0, 10, 20, 0));
+			this.comboBox = new ComboBox<String>(FXCollections.observableArrayList(this.ConsultantsData));
+			comboBox.setOnAction(new EventHandler<ActionEvent>() {
+				public void handle(ActionEvent event) {
+					int index = comboBox.getSelectionModel().getSelectedIndex();
+					selectedConsultant = ((ArrayList<Consultant>) AppController.getInstance().getConsultantList()
+							.getConsultantsList()).get(index);
+				}
+			});
+			text = new Text("Select Your Consultant");
+			text.setFont(Font.font("Lato", FontPosture.ITALIC, 17));
+
+			this.hb1.getChildren().addAll(text, this.comboBox);
+			return this.hb1;
+		} else {
+			this.hb2 = new HBox();
+			this.hb2.setSpacing(10);
+			addButton = new MyButton("Save");
+			addButton.setOnAction(e -> handleAdd());
+			cancelButton = new MyButton("Cancel");
+			cancelButton.setOnAction(new EventHandler<ActionEvent>() {
+
+				@Override
+				public void handle(ActionEvent event) {
+					cancelButton.getScene().getWindow().hide();
+				}
+			});
+
+			hb2.getChildren().addAll(addButton, cancelButton);
+
+			this.hb2.setPadding(new Insets(30, 20, 10, 95));
+
+			return this.hb2;
+		}
 	}
 }
