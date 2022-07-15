@@ -168,4 +168,10 @@ public class AddPatient extends VBox {
 			}
 		}
 	}
+
+	private void clearView() {
+		for (MyTextField t : this.texts) {
+			t.setText("");
+		}
+	}
 }
