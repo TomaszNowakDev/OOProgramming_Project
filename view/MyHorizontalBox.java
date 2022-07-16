@@ -91,5 +91,26 @@ public class MyHorizontalBox extends HBox implements Serializable {
 
             }
         });
+
+        this.editPatient.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                if (selectedIndex < 0) {
+                    System.out.println("Please select an item from the list!");
+                } else {
+                    Parent root = new EditPatient(AppController.getInstance().getConsultantList().searchPatient(
+                            AppController.getInstance().getConsultantList().getAllPacient().get(selectedIndex)));
+                    Stage stage = new Stage();
+                    stage.setTitle("Edit Patient");
+                    stage.setScene(new Scene(root, 400, 400));
+                    stage.show();
+                }
+            }
+        });
+
+    public void handleRefresh() {
+        this.setupListViewData();
     }
+
 }
