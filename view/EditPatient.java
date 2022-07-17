@@ -31,7 +31,6 @@ public class EditPatient extends VBox {
 		this.text4 = new MyTextField();
 		this.text5 = new MyTextField();
 		initUI();
-
 	}
 
 	private void initUI() {
@@ -94,5 +93,22 @@ public class EditPatient extends VBox {
 		hb.getChildren().addAll(saveButton, cancelButton);
 		this.hb.setPadding(new Insets(30, 20, 10, 55));
 		return this.hb;
+	}
+
+	private void handleEdit() {
+		if (text1.getText().isEmpty() || text2.getText().isEmpty() || text3.getText().isEmpty()
+				|| text4.getText().isEmpty() || text5.getText().isEmpty() || SelectedSev == null) {
+			System.out.println("Please fill in all empty fields!");
+		} else {
+			AppController.getInstance().getConsultantList().searchPatient(selectedPatient.getPatientName()).getName().setFirstName(text1.getText());
+			AppController.getInstance().getConsultantList().searchPatient(selectedPatient.getPatientName()).getName().setLastName(text2.getText());
+			AppController.getInstance().getConsultantList().searchPatient(selectedPatient.getPatientName()).setId(text3.getText());
+			AppController.getInstance().getConsultantList().searchPatient(selectedPatient.getPatientName()).setPhone(text4.getText());
+			AppController.getInstance().getConsultantList().searchPatient(selectedPatient.getPatientName()).setIllness(text5.getText());
+			AppController.getInstance().getConsultantList().searchPatient(selectedPatient.getPatientName()).setSeverity(SelectedSev);
+			AppController.getInstance().refreshPatients();
+			System.out.println("Patient's data updated!");
+			saveButton.getScene().getWindow().hide();
+		}
 	}
 }
