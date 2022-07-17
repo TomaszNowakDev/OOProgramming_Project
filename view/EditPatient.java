@@ -31,10 +31,11 @@ public class EditPatient extends VBox {
 		this.text4 = new MyTextField();
 		this.text5 = new MyTextField();
 		initUI();
+
 	}
 
 	private void initUI() {
-		this.getChildren().addAll(addGridPane());
+		this.getChildren().addAll(addGridPane(), addHBox());
 	}
 
 	private GridPane addGridPane() {
@@ -73,5 +74,25 @@ public class EditPatient extends VBox {
 		});
 		this.grid.add(cbxSev, 1, 5);
 		return grid;
+	}
+
+	private HBox addHBox() {
+
+		this.hb = new HBox();
+		this.hb.setSpacing(16);
+		saveButton = new MyButton("Save Changes");
+		saveButton.setOnAction(e -> handleEdit());
+		cancelButton = new MyButton("Cancel");
+		cancelButton.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				cancelButton.getScene().getWindow().hide();
+			}
+		});
+
+		hb.getChildren().addAll(saveButton, cancelButton);
+		this.hb.setPadding(new Insets(30, 20, 10, 55));
+		return this.hb;
 	}
 }
