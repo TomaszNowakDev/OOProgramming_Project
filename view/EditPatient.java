@@ -30,6 +30,7 @@ public class EditPatient extends VBox {
 		this.text3 = new MyTextField();
 		this.text4 = new MyTextField();
 		this.text5 = new MyTextField();
+		gridUpdate();
 		initUI();
 	}
 
@@ -73,6 +74,18 @@ public class EditPatient extends VBox {
 		});
 		this.grid.add(cbxSev, 1, 5);
 		return grid;
+	}
+
+	private void gridUpdate() {
+		// update Patient data in the grid
+
+		text1.setText(AppController.getInstance().getConsultantList().searchPatient(selectedPatient.getPatientName()).getName().getFirstName());
+		text2.setText(AppController.getInstance().getConsultantList().searchPatient(selectedPatient.getPatientName()).getName().getLastName());
+		text3.setText(AppController.getInstance().getConsultantList().searchPatient(selectedPatient.getPatientName()).getID());
+		text4.setText(AppController.getInstance().getConsultantList().searchPatient(selectedPatient.getPatientName()).getPhone());
+		text5.setText(AppController.getInstance().getConsultantList().searchPatient(selectedPatient.getPatientName()).getIllness());
+		SelectedSev = AppController.getInstance().getConsultantList().searchPatient(selectedPatient.getPatientName()).getSeverity();
+
 	}
 
 	private HBox addHBox() {
