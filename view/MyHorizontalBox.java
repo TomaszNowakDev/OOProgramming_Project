@@ -109,6 +109,24 @@ public class MyHorizontalBox extends HBox implements Serializable {
             }
         });
 
+        removePatient.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                if (selectedIndex < 0) {
+                    System.out.println("Please select an item from the list!");
+                } else {
+                    System.out
+                            .println(AppController.getInstance().getConsultantList().getAllPacient().get(selectedIndex)
+                                    + " removed from patient list.");
+                    AppController.getInstance().getConsultantList().removePatient(
+                            AppController.getInstance().getConsultantList().getAllPacient().get(selectedIndex));
+                    setupListViewData();
+                }
+
+            }
+        });
+
     public void handleRefresh() {
         this.setupListViewData();
     }
