@@ -45,4 +45,22 @@ public class AddVisit extends VBox {
 
 		this.getChildren().addAll(text2, text, textArea, addHbox());
 	}
+
+	private HBox addHbox() {
+		this.hb = new HBox();
+		this.hb.setSpacing(10);
+		this.submit.setOnAction(e -> handleAdd());
+		cancelButton = new MyButton("Cancel");
+		cancelButton.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				cancelButton.getScene().getWindow().hide();
+			}
+		});
+		this.hb.getChildren().addAll(submit, cancelButton);
+		
+		return this.hb;
+
+	}
 }
