@@ -59,8 +59,17 @@ public class AddVisit extends VBox {
 			}
 		});
 		this.hb.getChildren().addAll(submit, cancelButton);
-		
-		return this.hb;
 
+		return this.hb;
+	}
+
+	private void handleAdd() {
+		if (this.textArea.getText().isEmpty()) {
+			System.out.println("Please enter notes of the visit.");
+		} else {
+			System.out.println("Patient: "+this.patient.getPatientName() +" Visit on: " + LocalDate.now() + " Notes: " + textArea.getText());
+			this.patient.add(new Visit(LocalDate.now(), textArea.getText()));
+			submit.getScene().getWindow().hide();
+		}
 	}
 }
