@@ -70,6 +70,15 @@ public class ConsultantsList implements Serializable {
 		}
 		return listOfAllPatients;
 	}
+	
+	public ArrayList<Patient> getPracPacients() {
+		this.pracPatients = new ArrayList<Patient>();
+		for (Consultant c : AppController.getInstance().getConsultantList().getConsultantsList()) {
+			for (Patient p : c.getPatients())
+				this.pracPatients.add(p);
+		}
+		return this.pracPatients;
+	}
 
 	public Patient searchPatient(String name) {
 		Patient obj = null;
