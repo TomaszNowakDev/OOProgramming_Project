@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+@SuppressWarnings("serial")
 public class Practice implements Serializable {
 	private ArrayList<Consultant> ConsultantList = new ArrayList<Consultant>();
 

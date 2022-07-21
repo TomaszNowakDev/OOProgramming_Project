@@ -2,7 +2,9 @@ package model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import controller.AppController;
 
+@SuppressWarnings({ "serial", "unused" })
 public class Consultant extends Person implements Serializable {
 	private ArrayList<Patient> patients;
 	private String expertise;

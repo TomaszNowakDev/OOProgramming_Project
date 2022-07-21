@@ -63,15 +63,15 @@ public class ConsultantsList implements Serializable {
 	}
 
 
-	public Patient searchPatient(String name) {
-		Patient obj = null;
-		for (Patient p : this.pracPatients) {
-			if (p.getName().getFullName().toUpperCase().equals(name.toUpperCase())) {
-				obj = p;
+		public Patient searchPatient(String name) {
+			Patient obj = null;
+			for (Patient p : this.pracPatients) {
+				if (p.getName().getFullName().toUpperCase().equals(name.toUpperCase())) {
+					obj = p;
+				}
 			}
+			return obj;
 		}
-		return obj;
-	}
 
 	public boolean removePatient(String name) {
 		for (Consultant c : this.consultants) {
