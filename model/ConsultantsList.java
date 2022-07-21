@@ -62,16 +62,24 @@ public class ConsultantsList implements Serializable {
 		return consultantData;
 	}
 
-
-		public Patient searchPatient(String name) {
-			Patient obj = null;
-			for (Patient p : this.pracPatients) {
-				if (p.getName().getFullName().toUpperCase().equals(name.toUpperCase())) {
-					obj = p;
-				}
-			}
-			return obj;
+	public ArrayList<String> getAllPacient() {
+		this.listOfAllPatients = new ArrayList<String>();
+		for (Consultant c : AppController.getInstance().getConsultantList().getConsultantsList()) {
+			for (Patient p : c.getPatients())
+				this.listOfAllPatients.add(p.getName().getFullName());
 		}
+		return listOfAllPatients;
+	}
+
+	public Patient searchPatient(String name) {
+		Patient obj = null;
+		for (Patient p : this.pracPatients) {
+			if (p.getName().getFullName().toUpperCase().equals(name.toUpperCase())) {
+				obj = p;
+			}
+		}
+		return obj;
+	}
 
 	public boolean removePatient(String name) {
 		for (Consultant c : this.consultants) {
