@@ -59,7 +59,6 @@ public class AddVisit extends VBox {
 			}
 		});
 		this.hb.getChildren().addAll(submit, cancelButton);
-
 		return this.hb;
 	}
 

@@ -41,7 +41,6 @@ public class EditPatient extends VBox {
 	private GridPane addGridPane() {
 		// adding gridPane and text fields with labels
 		this.setPadding(new Insets(30, 20, 20, 60));
-
 		this.label1 = new MyLabel("Patient firstname:");
 		this.label2 = new MyLabel("Patient lastname:");
 		this.label3 = new MyLabel("Patient ID:");
@@ -52,7 +51,6 @@ public class EditPatient extends VBox {
 		this.getStyleClass().add("mybutton");
 		grid.setHgap(10);
 		grid.setVgap(20);
-
 		this.grid.add(text1, 1, 0);
 		this.grid.add(text2, 1, 1);
 		this.grid.add(text3, 1, 2);
@@ -75,17 +73,14 @@ public class EditPatient extends VBox {
 		this.grid.add(cbxSev, 1, 5);
 		return grid;
 	}
-
 	private void gridUpdate() {
 		// update Patient data in the grid
-
 		text1.setText(AppController.getInstance().getConsultantList().searchPatient(selectedPatient.getPatientName()).getName().getFirstName());
 		text2.setText(AppController.getInstance().getConsultantList().searchPatient(selectedPatient.getPatientName()).getName().getLastName());
 		text3.setText(AppController.getInstance().getConsultantList().searchPatient(selectedPatient.getPatientName()).getID());
 		text4.setText(AppController.getInstance().getConsultantList().searchPatient(selectedPatient.getPatientName()).getPhone());
 		text5.setText(AppController.getInstance().getConsultantList().searchPatient(selectedPatient.getPatientName()).getIllness());
 		SelectedSev = AppController.getInstance().getConsultantList().searchPatient(selectedPatient.getPatientName()).getSeverity();
-
 	}
 
 	private HBox addHBox() {
