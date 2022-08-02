@@ -12,6 +12,15 @@ If we go to the File the options are: Load From File, Save To File, and Exit. If
 
 ![](images/menu.png)
 
-If we decide to press Exit warning information wil appear. 
+If we decide to press Exit button the warning information will appear. 
 
 ![](images/exit.png)
+
+In help tab there is only one option, if you click about button... 
+
+![](images/help.png)
+
+...information about the author of the project will be displayed.
+
+
+![](images/about.png)
