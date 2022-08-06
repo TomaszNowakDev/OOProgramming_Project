@@ -29,3 +29,7 @@ In help tab there is only one option, if you click about button...
 The second tab is for managing consultants. We can add new consultants, edit existing consultants or delete them.
 
 ![](images/addConsultant.png)
+
+After pressing add consultant, a new window appears in which we enter the details of the new consultant.
+
+![](images/addingconsultantwindow.png) 
