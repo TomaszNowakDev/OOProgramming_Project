@@ -37,3 +37,7 @@ After pressing add consultant, a new window appears in which we enter the detail
 After adding a new consultant, all buttons become active. Now we can edit the existing consultant or delete him.
 
 ![](images/tab2activebuttons.png)
+
+Now we can edit the consultant.
+
+![](images/editConsultant.png)
