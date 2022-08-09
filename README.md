@@ -41,3 +41,9 @@ After adding a new consultant, all buttons become active. Now we can edit the ex
 Now we can edit the consultant.
 
 ![](images/editConsultant.png)
+
+### Tab 1 (Patients)
+
+Patients can only be added to an existing consultant. Press the add Patient button and a new window will appear where we enter the patient's data.
+
+![](images/newPatient.png)
