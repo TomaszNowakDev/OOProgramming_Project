@@ -50,3 +50,10 @@ To delete consultant press Delete Consultant.
 The first tab is for managing patients and adding visits. Patients can only be added to an existing consultant. Press the add Patient button and a new window will appear where we enter the patient's data.
 
 ![](images/newPatient.png)
+
+First select existing consultant from drop down list.
+
+![](images/selectConsultant.png)
+
+Next complete patient details, illness severity must be selected from drop down list. There are three options: Low, Medium and High.
+
