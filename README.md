@@ -55,5 +55,6 @@ First select existing consultant from drop down list.
 
 ![](images/selectConsultant.png)
 
-Next complete patient details, illness severity must be selected from drop down list. There are three options: Low, Medium and High.
+Next complete patient details, illness severity must be selected from drop down list. There are three options: Low, Medium and High. And press Save.
 
+![](images/selectSeverity.png)
