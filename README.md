@@ -65,6 +65,8 @@ When patient is added, now we can edit the patient. Previously entered data can 
 
 To delete patient, select patient from the list and press Remove Patient.
 
-Adding visit to a patient, press Record Visit.
+Adding visit to a patient, select patient and press Record Visit.
 
 ![](images/recordVisit.png)
+
+When recording patient's visit the date is automatically read from the local system of the user. Enter a comment in the space provided and click Submit.
