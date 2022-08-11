@@ -43,7 +43,7 @@ Now we can edit the consultant. Previously entered data can be changed. To save 
 
 ![](images/editConsultant.png)
 
-To delete consultant press Delete Consultant.
+To delete consultant, select consultant from the list and press Delete Consultant.
 
 ### Tab 1 (Patients)
 
@@ -62,3 +62,9 @@ Next complete patient details, illness severity must be selected from drop down 
 When patient is added, now we can edit the patient. Previously entered data can be changed. To save changes, click Save changes.
 
 ![](images/editPatient.png)
+
+To delete patient, select patient from the list and press Remove Patient.
+
+Adding visit to a patient, press Record Visit.
+
+![](images/recordVisit.png)
