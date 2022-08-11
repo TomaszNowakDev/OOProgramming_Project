@@ -58,3 +58,7 @@ First select existing consultant from drop down list.
 Next complete patient details, illness severity must be selected from drop down list. There are three options: Low, Medium and High. And press Save.
 
 ![](images/selectSeverity.png)
+
+When patient is added, now we can edit the patient. Previously entered data can be changed. To save changes, click Save changes.
+
+![](images/editPatient.png)
